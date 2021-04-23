@@ -1,0 +1,120 @@
+$mygreen: rgb(34, 181, 115);
+$myorange: rgb(203, 149, 64);
+@mixin colorbox($color) {
+  height: 450px;
+  width: 350px;
+  background-color: $color;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $mygreen;
+  h1 {
+    color: white;
+  }
+  h3 {
+    color: $myorange;
+  }
+  button {
+    background-color: $mygreen;
+    color: $myorange;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.maindiv {
+  margin: 5vh;
+  display: grid;
+  grid-template-areas:
+    "nav nav nav"
+    "science nature lecture";
+  #navbar {
+    padding-left: 500px;
+    grid-area: nav;
+    height: 20vh;
+    font-size: 40px;
+    color: white;
+    font-weight: lighter;
+    .hamburger {
+      background-color: black;
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      div {
+        width: 40px;
+        height: 5px;
+        background-color: white;
+      }
+    }
+  }
+  #science {
+    grid-area: science;
+    #scienceblack {
+      @include colorbox(black);
+      color: white;
+    }
+  }
+  #nature {
+    grid-area: nature;
+    #naturewhite {
+      @include colorbox(white);
+    }
+  }
+
+  #lecture {
+    grid-area: lecture;
+    #lectureblack {
+      @include colorbox(black);
+      color: white;
+      align-items: center;
+      justify-content: space-around;
+      #videoicon {
+        height: 100px;
+        width: 100px;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        #video {
+          color: white;
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .maindiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #navbar {
+      padding-left: 0px;
+      font-size: 25px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
